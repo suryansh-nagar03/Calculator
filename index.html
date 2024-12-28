@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="workspace">
+        <div class="calculations"></div>
+        <div class="buttons">
+            <div class="row1">
+                <button id="reset">AC</button>
+                <button id="delete">C</button>
+                <button id="mod">%</button>
+                <button id="divide">/</button>
+            </div>
+            <div class="row2">
+                <button id="7">7</button>
+                <button id="8">8</button>
+                <button id="9">9</button>
+                <button id="multiply">X</button>
+            </div>
+            <div class="row3">
+                <button id="4">4</button>
+                <button id="5">5</button>
+                <button id="6">6</button>
+                <button id="add">+</button>
+            </div>
+            <div class="row4">
+                <button id="1">1</button>   
+                <button id="2">2</button>
+                <button id="3">3</button>
+                <button id="subtract">-</button>
+            </div>
+            <div class="row5">
+                <button id="0">0</button>
+                <button id="decimal">.</button>
+                <button id="equals">=</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-text">
+            Copyright © Suryansh Nagar <span id="current-year"></span>
+            <script>
+                document.getElementById("current-year").textContent = new Date().getFullYear();   
+            </script>
+        </div>
+    </div>
+</body>
+</html>
