@@ -131,16 +131,25 @@ reset.addEventListener("click", function(){
     operand2 = "";
     line1.textContent = "";
     line2.textContent = "";
+
+    decimalPressed1 = "false";
+    decimalPressed2 = "false";
 });
 backspace.addEventListener("click",function(e){
     if (operator === "") {
-        if (operand1.length > 0) {
+        if (operand1.length>0) {
+            if(operand1.charAt(operand1.length-1)==="."){
+                decimalPressed1 = "false";
+            }
             operand1 = operand1.slice(0,-1);
             line2.textContent = operand1;
         }
     }
     else {
-        if (operand2.length > 0) {
+        if (operand2.length>0) {
+            if(operand2.charAt(operand1.length-1) === "."){
+                decimalPressed2 = "false";
+            }
             operand2 = operand2.slice(0,-1);
             line2.textContent = operand2;
         }
@@ -160,6 +169,7 @@ add.addEventListener("click", function(){
         line2.textContent = "";
 
         operator = "+";
+        decimalPressed2 = "false";
     }
     else if(operand1!=="") {
         displayDigit("+");
@@ -175,6 +185,7 @@ subtract.addEventListener("click", function(){
         line2.textContent = "";
 
         operator = "-";
+        decimalPressed2 = "false";
     }
     else if(operand1!==""){
         displayDigit("-");
@@ -190,6 +201,7 @@ multiply.addEventListener("click", function(){
         line2.textContent = "";
 
         operator = "*";
+        decimalPressed2 = "false";
     }
     else if(operand1!==""){
         displayDigit("x");
@@ -205,6 +217,7 @@ divide.addEventListener("click", function(){
         line2.textContent = "";
 
         operator = "/";
+        decimalPressed2 = "false";
     }
     else if(operand1!==""){
         displayDigit("÷");
@@ -220,6 +233,7 @@ mod.addEventListener("click", function(){
         line2.textContent = "";
 
         operator = "%";
+        decimalPressed2 = "false";
     }
     else if(operand1!==""){
         displayDigit("%");
@@ -228,6 +242,7 @@ mod.addEventListener("click", function(){
 });
 equals.addEventListener("click", function(){
     displayResult();
+
 });
 
 // Button's functions:
@@ -264,5 +279,109 @@ equals.addEventListener("mouseup",function(e){
     equals.style.margin = "0px";
 })
 
+document.addEventListener("keydown", function(e) {
+    const key = e.key;
+    let button;
+    if (!isNaN(key)) {
+        button = document.getElementById(key);
+        displayDigit(key);
+    } 
+    else if(key === "+"){
+        button = add;
+        add.click();
+    } 
+    else if(key === "-"){
+        button = subtract;
+        subtract.click();
+    } 
+    else if(key === "*"){
+        button = multiply;
+        multiply.click();
+    } 
+    else if(key === "/"){
+        button = divide;
+        divide.click();
+    } 
+    else if(key === "%"){
+        button = mod;
+        mod.click();
+    } 
+    else if(key === "=" || key === "Enter"){
+        button = equals;
+        equals.click();
+    } 
+    else if(key === "."){
+        button = decimal;
+        decimal.click();
+    } 
+    else if(key === "Backspace"){
+        button = backspace;
+        backspace.click();
+    } 
+    else if(key.toLowerCase() === "delete"){
+        button = reset;
+        reset.click();
+    }
 
+    if(button === equals){
+        button.style.width = "125px";
+        button.style.margin = "7.5px";
+        button.style.height = "55px";
+        button.style.fontSize = "15px";
+    } 
+    else if(button){
+        button.style.width = "55px";
+        button.style.height = "55px";
+        button.style.fontSize = "15px";
+        button.style.margin = "5px";
+    }
+});
 
+document.addEventListener("keyup", function(e) {
+    const key = e.key;
+    let button;
+
+    if(!isNaN(key)){
+        button = document.getElementById(key);
+    } 
+    else if(key === "+"){
+        button = add;
+    } 
+    else if(key === "-"){
+        button = subtract;
+    } 
+    else if(key === "*"){
+        button = multiply;
+    } 
+    else if(key === "/"){
+        button = divide;
+    } 
+    else if(key === "%"){
+        button = mod;
+    } 
+    else if(key === "=" || key === "Enter"){
+        button = equals;
+    } 
+    else if(key === "."){
+        button = decimal;
+    } 
+    else if(key === "Backspace"){
+        button = backspace;
+    } 
+    else if(key.toLowerCase() === "delete"){
+        button = reset;
+    }
+
+    if(button === equals){
+        button.style.width = "140px";
+        button.style.margin = "0px";
+        button.style.height = "65px";
+        button.style.fontSize = "20px";
+    } 
+    else if(button){
+        button.style.width = "65px";
+        button.style.height = "65px";
+        button.style.fontSize = "20px";
+        button.style.margin = "0px";
+    }
+});

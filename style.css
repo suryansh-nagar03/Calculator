@@ -39,6 +39,8 @@ body{
     width: 290px;
     text-align: right;
     color: lightgrey;
+    font-size: 25px;
+    font-family: 'Courier New', Courier, monospace;
 }
 .buttons{
     display: flex;
@@ -58,6 +60,7 @@ button{
     height: 65px;
     width: 65px;
     font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
     border-radius: 50%;
     border: 0px solid #2b2b2b;
     box-shadow: 0px 4px 6px 6px rgba(18, 18, 18, 0.4);
